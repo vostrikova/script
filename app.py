@@ -8,7 +8,8 @@ app = Flask(__name__)
 
 @app.route("/", methods=["POST"])
 def run_script():
-    subprocess.Popen("python project_calculation.py", shell=True)
+    with subprocess.Popen("python project_calculation.py", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE) as proc:
+        stdout, stderr = proc.communicate()
     return "OK"
 
 
