@@ -1,1 +1,1 @@
-web: gunicorn app:app
+web: pip install --upgrade google-api-python-client; gunicorn app:app
